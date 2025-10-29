@@ -1,4 +1,8 @@
 ﻿using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Navigation;
+using WpfApp2;
+using WpfApp2.page;
 
 namespace LanguageAssessmentSystem
 {
@@ -7,21 +11,9 @@ namespace LanguageAssessmentSystem
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            string username = UsernameTextBox.Text;
-            string password = PasswordBox.Password;
-
-            if (username == "admin" && password == "111")
-            {
-                MessageBox.Show("登录成功！");
-            }
-            else
-            {
-                MessageBox.Show("用户名或密码错误，请重试。");
-            }
+            // 启动时直接显示登录页面
+            MainFrame.Navigate(new LoginPage());
         }
     }
 }

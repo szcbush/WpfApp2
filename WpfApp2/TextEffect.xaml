@@ -1,5 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!-- 定义文本效果 -->
-    <DropShadowEffect x:Key="TextShadowEffect" ShadowDepth="2" Color="#FFD98B00" BlurRadius="5" Opacity="0.5"/>
+    <DropShadowEffect x:Key="ShadowEffect" BlurRadius="20" ShadowDepth="3" Opacity="0.3"/>
+
+    <!-- 其他全局样式 -->
+    <Style TargetType="TextBox" x:Key="PlaceholderTextBoxStyle">
+        <Style.Triggers>
+            <Trigger Property="Text" Value="">
+                <Setter Property="Foreground" Value="#888888"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
