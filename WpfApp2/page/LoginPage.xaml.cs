@@ -12,15 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Data.Sqlite;
+using System.IO;
+
 
 namespace WpfApp2.page
 {
     public partial class LoginPage : Page
     {
+        private const string DatabaseFile = "users.db";
+        private const string ConnectionString = "Data Source=users.db";
+
         public LoginPage()
         {
             InitializeComponent();
-            Loaded += (s, e) => UsernameTextBox.Focus();
+            Loaded += (s, e) =>
+            {
+                UsernameTextBox.Focus();
+                InitializeDatabase(); // 启动时自动初始化数据库
+            };
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -28,7 +38,6 @@ namespace WpfApp2.page
             string username = UsernameTextBox.Text.Trim();
             string password = PasswordBox.Password;
 
-            // 简单的登录验证
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("请输入用户名和密码！", "登录失败",
@@ -36,11 +45,11 @@ namespace WpfApp2.page
                 return;
             }
 
-            // 登录验证逻辑
             if (ValidateLogin(username, password))
             {
-                // 登录成功，直接导航到菜单页面
-                NavigationService.Navigate(new MenuPage());
+                MessageBox.Show("登录成功！", "提示",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService?.Navigate(new MenuPage());
             }
             else
             {
@@ -51,8 +60,74 @@ namespace WpfApp2.page
 
         private bool ValidateLogin(string username, string password)
         {
-            // 示例验证逻辑
-            return username == "admin" && password == "123456";
+            try
+            {
+                using (var conn = new SqliteConnection(ConnectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM users WHERE username=@username AND password=@password";
+                    using (var cmd = new SqliteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+
+                        long count = (long)(cmd.ExecuteScalar() ?? 0);
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"数据库错误：{ex.Message}", "错误",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
+        private void InitializeDatabase()
+        {
+            try
+            {
+                if (!File.Exists(DatabaseFile))
+                {
+                    using (var conn = new SqliteConnection(ConnectionString))
+                    {
+                        conn.Open();
+
+                        string createTable = @"
+                            CREATE TABLE IF NOT EXISTS users (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                username TEXT NOT NULL UNIQUE,
+                                password TEXT NOT NULL
+                            );
+                        ";
+
+                        using (var cmd = new SqliteCommand(createTable, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        string insertDefaultUser = @"
+                            INSERT INTO users (username, password)
+                            VALUES ('admin', '123456');
+                        ";
+
+                        using (var cmd = new SqliteCommand(insertDefaultUser, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("数据库初始化完成！默认账号：admin / 123456",
+                        "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"数据库初始化失败：{ex.Message}", "错误",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
+
