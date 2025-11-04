@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Data.Sqlite;
 using System.IO;
 
@@ -49,7 +48,7 @@ namespace WpfApp2.page
             {
                 MessageBox.Show("登录成功！", "提示",
                     MessageBoxButton.OK, MessageBoxImage.Information);
-                NavigationService?.Navigate(new MenuPage());
+                NavigationService?.Navigate(new MainMenu());
             }
             else
             {
@@ -109,7 +108,9 @@ namespace WpfApp2.page
 
                         string insertDefaultUser = @"
                             INSERT INTO users (username, password)
-                            VALUES ('admin', '123456');
+                            VALUES ('admin', '123456'),
+                            VALUES ('szc', '111111'),
+                            VALUES ('wtj', '111111'),;
                         ";
 
                         using (var cmd = new SqliteCommand(insertDefaultUser, conn))

@@ -35,6 +35,10 @@
 
   <ItemGroup>
     <None Remove="image\background.jpg" />
+    <None Remove="image\konwlege.jpg" />
+    <None Remove="image\konwlege.png" />
+    <None Remove="image\return.png" />
+    <None Remove="image\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +49,19 @@
 
   <ItemGroup>
     <Resource Include="image\background.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\konwlege.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\konwlege.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\return.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

@@ -20,29 +20,63 @@ namespace WpfApp2.page
         public MenuPage()
         {
             InitializeComponent();
+            // 默认显示第一个菜单的内容
+            ShowContent(LanguageDevelopmentPanel);
+            SetSelectedButton(LanguageDevelopmentBtn);
         }
 
-        private void BackToMenu_Click(object sender, RoutedEventArgs e)
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            // 返回主菜单
-            if (NavigationService.CanGoBack)
+            var button = sender as Button;
+            if (button == null) return;
+
+            // 隐藏所有内容面板
+            HideAllContentPanels();
+
+            // 根据按钮显示对应内容
+            switch (button.Name)
             {
-                NavigationService.GoBack();
+                case "LanguageDevelopmentBtn":
+                    ShowContent(LanguageDevelopmentPanel);
+                    break;
+                case "VocabularyDevelopmentBtn":
+                    ShowContent(VocabularyDevelopmentPanel);
+                    break;
+                case "SemanticDevelopmentBtn":
+                    ShowContent(SemanticDevelopmentPanel);
+                    break;
             }
-            else
-            {
-                NavigationService.Navigate(new MenuPage());
-            }
+
+            // 更新按钮选中状态
+            SetSelectedButton(button);
         }
 
-        private void StartAssessment_Click(object sender, RoutedEventArgs e)
+        private void HideAllContentPanels()
         {
-            // 开始语言评估
-            MessageBox.Show("开始语言发展评估测试", "评估开始",
-                MessageBoxButton.OK, MessageBoxImage.Information);
+            LanguageDevelopmentPanel.Visibility = Visibility.Collapsed;
+            VocabularyDevelopmentPanel.Visibility = Visibility.Collapsed;
+            SemanticDevelopmentPanel.Visibility = Visibility.Collapsed;
+        }
 
-            // 实际项目中这里会导航到评估页面
-            // NavigationService.Navigate(new AssessmentPage());
+        private void ShowContent(StackPanel panel)
+        {
+            panel.Visibility = Visibility.Visible;
+        }
+
+        private void SetSelectedButton(Button selectedButton)
+        {
+            // 重置所有按钮样式
+            LanguageDevelopmentBtn.Style = (Style)FindResource("GradientBlueButton");
+            VocabularyDevelopmentBtn.Style = (Style)FindResource("GradientBlueButton");
+            SemanticDevelopmentBtn.Style = (Style)FindResource("GradientBlueButton");
+
+            // 设置选中按钮样式
+            selectedButton.Style = (Style)FindResource("SelectedButtonStyle");
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainMenu());
         }
     }
 }
