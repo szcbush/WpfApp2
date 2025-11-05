@@ -109,7 +109,7 @@
         <Image Source="/WpfApp2;component/image/background.jpg" Stretch="UniformToFill" Opacity="0.3"/>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
 
@@ -161,7 +161,7 @@
                         <StackPanel>
                             <!-- 语言的发展内容 -->
                             <StackPanel x:Name="LanguageDevelopmentPanel" MaxWidth="1000" Margin="0,0,0,30">
-                                <!-- 这里放置你原来的所有内容 -->
+                                <!-- 这里放置原来的所有内容 -->
                                 <Border Style="{StaticResource ContentCardStyle}">
                                     <StackPanel>
                                         <TextBlock Text="婴幼儿语言发展阶段" 
@@ -176,7 +176,102 @@
                                            HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Border>
-                                <!-- 其他原有内容... -->
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
                             </StackPanel>
 
                             <!-- 词汇的发展内容 -->
@@ -211,6 +306,51 @@
                                         <TextBlock Text="• 词汇增长速度加快" Style="{StaticResource ListItemStyle}"/>
                                     </StackPanel>
                                 </Border>
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
                             </StackPanel>
 
                             <!-- 词汇语义的发展内容 -->
@@ -241,6 +381,38 @@
                                         <TextBlock Text="扩展不足" Style="{StaticResource SubTitleStyle}"/>
                                         <TextBlock Text="• 词汇使用范围过窄" Style="{StaticResource ListItemStyle}"/>
                                         <TextBlock Text="• 例：只把自家狗叫'狗'" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource ContentCardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="XXXX" Style="{StaticResource SectionTitleStyle}"/>
+
+                                        <TextBlock Text="X-X岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+
+                                        <TextBlock Text="XX岁" Style="{StaticResource TimeRangeStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
+                                        <TextBlock Text="• XXXXXXXXXXXX" Style="{StaticResource ListItemStyle}"/>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>

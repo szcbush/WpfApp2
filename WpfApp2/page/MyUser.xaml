@@ -8,6 +8,97 @@
       Background="#FFF5F5F5">
 
     <Page.Resources>
+
+        <!-- 操作按钮样式 -->
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF1A73E8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0d47a1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ModalOverlayStyle" TargetType="Border">
+            <Setter Property="Background" Value="#80000000"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+
+        <!-- 弹窗容器样式 -->
+        <Style x:Key="ModalDialogStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Width" Value="500"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="20" Opacity="0.3" ShadowDepth="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 弹窗标题样式 -->
+        <Style x:Key="ModalTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#FF1A73E8"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <!-- 表单标签样式 -->
+        <Style x:Key="FormLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+        </Style>
+
+        <!-- 表单输入框样式 -->
+        <Style x:Key="FormTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+        </Style>
+
+        <!-- 表单下拉框样式 -->
+        <Style x:Key="FormComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+        </Style>
+
+        <!-- 弹窗按钮样式 -->
+        <Style x:Key="ModalButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinWidth" Value="80"/>
+        </Style>
         <Style x:Key="TitileText" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Effect">
@@ -47,34 +138,6 @@
             <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
         </Style>
 
-        <!-- 操作按钮样式 -->
-        <Style x:Key="ActionButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF1A73E8"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="8,4"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" 
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="4"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#0d47a1"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
         <!-- 数据行样式 -->
         <Style x:Key="DataRowStyle" TargetType="Border">
@@ -99,7 +162,7 @@
         <Image Source="/WpfApp2;component/image/background.jpg" Stretch="UniformToFill" Opacity="0.3"/>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
 
@@ -229,8 +292,9 @@
                                                     HorizontalAlignment="Center">
                                                     <Button Content="删除" 
                                                     Style="{StaticResource ActionButtonStyle}"
-                                                    Click="ViewReport_Click"
+                                                    Click="DeleteUser_Click"
                                                     Tag="{Binding UserId}"/>
+                                                    
                                                     <Button Content="修改" 
                                                     Background="#FFD98B00"
                                                     Style="{StaticResource ActionButtonStyle}"
@@ -244,26 +308,109 @@
                             </ItemsControl>
                         </ScrollViewer>
 
-                        <!-- 底部状态栏 -->
-                        <Border Grid.Row="3" 
-                        Background="#FAFAFA" 
-                        Padding="15,10" 
-                        BorderThickness="1,0,0,0" 
-                        BorderBrush="#E0E0E0"
-                        CornerRadius="0,0,8,8">
-                            <Grid>
-                                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                    <Button Content="添加用户" 
-                                    Background="#34A853"
-                                    Style="{StaticResource ActionButtonStyle}"
-                                    Click="AddUser_Click"
-                                    Padding="12,6"/>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
                     </Grid>
                 </Border>
             </Grid>
         </Grid>
+        <Border x:Name="EditModalOverlay" Style="{StaticResource ModalOverlayStyle}">
+            <Border Style="{StaticResource ModalDialogStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 弹窗标题 -->
+                    <Border Grid.Row="0" Background="#F8F9FA" Padding="20,15" 
+                    CornerRadius="8,8,0,0" BorderThickness="0,0,0,1" 
+                    BorderBrush="#E0E0E0">
+                        <TextBlock x:Name="EditModalTitle" Text="修改用户信息" 
+                           Style="{StaticResource ModalTitleStyle}"/>
+                    </Border>
+
+                    <!-- 表单内容 -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="20">
+                        <StackPanel>
+                            <!-- 用户ID（只读） -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="用户编号：" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBlock x:Name="EditUserIdText" Grid.Column="1" 
+                                   FontSize="14" Foreground="#666666"
+                                   VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!-- 姓名 -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="姓名：" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBox x:Name="EditNameTextBox" Grid.Column="1" 
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                            </Grid>
+
+                            <!-- 性别 -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="性别：" Style="{StaticResource FormLabelStyle}"/>
+                                <ComboBox x:Name="EditGenderComboBox" Grid.Column="1" 
+                                  Style="{StaticResource FormComboBoxStyle}">
+                                    <ComboBoxItem Content="男" IsSelected="True"/>
+                                    <ComboBoxItem Content="女"/>
+                                </ComboBox>
+                            </Grid>
+
+                            <!-- 生日 -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="生日：" Style="{StaticResource FormLabelStyle}"/>
+                                <DatePicker x:Name="EditBirthdayDatePicker" Grid.Column="1" 
+                                    FontSize="14" Padding="8"
+                                    BorderThickness="1" BorderBrush="#E0E0E0"/>
+                            </Grid>
+
+                            <!-- 电话号码 -->
+                            <Grid Margin="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="电话号码：" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBox x:Name="EditPhoneTextBox" Grid.Column="1" 
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- 按钮区域 -->
+                    <Border Grid.Row="2" Background="#F8F9FA" Padding="15" 
+                    CornerRadius="0,0,8,8" BorderThickness="0,1,0,0" 
+                    BorderBrush="#E0E0E0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button x:Name="SaveEditButton" Content="保存" 
+                            Style="{StaticResource ModalButtonStyle}"
+                            Click="SaveModal_Click"/>
+
+                            <Button Content="关闭" 
+                            Background="#6C757D"
+                            Style="{StaticResource ModalButtonStyle}"
+                            Click="CloseEditModal_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </Border>
     </Grid>
 </Page>
