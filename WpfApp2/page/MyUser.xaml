@@ -252,17 +252,6 @@
                         BorderBrush="#E0E0E0"
                         CornerRadius="0,0,8,8">
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Grid.Column="0" 
-                                   Text="{Binding StatusMessage}" 
-                                   FontSize="12" 
-                                   Foreground="#666666" 
-                                   VerticalAlignment="Center"/>
-
                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                     <Button Content="添加用户" 
                                     Background="#34A853"

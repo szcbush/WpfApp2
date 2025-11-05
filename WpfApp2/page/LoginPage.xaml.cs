@@ -97,7 +97,10 @@ namespace WpfApp2.page
                             CREATE TABLE IF NOT EXISTS users (
                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 username TEXT NOT NULL UNIQUE,
-                                password TEXT NOT NULL
+                                password TEXT NOT NULL,
+                                gender TEXT NOT NULL,
+                                birthday DATE NOT NULL,
+                                phone_number TEXT NOT NULL
                             );
                         ";
 
@@ -107,10 +110,10 @@ namespace WpfApp2.page
                         }
 
                         string insertDefaultUser = @"
-                            INSERT INTO users (username, password)
-                            VALUES ('admin', '123456'),
-                            VALUES ('szc', '111111'),
-                            VALUES ('wtj', '111111'),;
+                            INSERT INTO users (id,username, password,gender,birthday,phone_number)
+                            VALUES (1,'admin', '123456','女','2000-07-27','17574611406'),
+                            (2,'szc', '111111','男','1999-03-17','13865265471'),
+                            (3,'wtj', '444444','男','1987-04-21','13365859654');
                         ";
 
                         using (var cmd = new SqliteCommand(insertDefaultUser, conn))
