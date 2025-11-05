@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:WpfApp2.page"
       Title="用户模块"
       Background="#FFF5F5F5">
@@ -201,14 +202,33 @@
 
                         <!-- 标题 -->
                         <Border Grid.Row="0" Background="#F5F5F5" Padding="15,12" 
-                        BorderThickness="0,0,0,1" BorderBrush="#E0E0E0"
-                        CornerRadius="8,8,0,0">
-                            <TextBlock Text="用户信息管理" 
-                               FontSize="30" 
-                               FontWeight="Bold" 
-                               Foreground="#FF1A73E8"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"/>
+                            BorderThickness="0,0,0,1" BorderBrush="#E0E0E0"
+                            CornerRadius="8,8,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- 标题文字 -->
+                                <TextBlock Grid.Column="0" 
+                                   Text="用户信息管理" 
+                                   FontSize="30" 
+                                   FontWeight="Bold" 
+                                   Foreground="#FF1A73E8"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
+
+                                <!-- 新增按钮 -->
+                                <Button Grid.Column="1"
+                                    Content="➕ 新增用户" 
+                                    Style="{StaticResource ActionButtonStyle}"
+                                    Click="AddUser_Click"
+                                    Padding="15,8"
+                                    FontSize="14"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,10,0"/>
+                             </Grid>
                         </Border>
 
                         <!-- 表头 -->
@@ -407,6 +427,97 @@
                             Background="#6C757D"
                             Style="{StaticResource ModalButtonStyle}"
                             Click="CloseEditModal_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </Border>
+
+        <!-- 新增用户弹窗 -->
+        <Border x:Name="AddModalOverlay" Style="{StaticResource ModalOverlayStyle}">
+            <Border Style="{StaticResource ModalDialogStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 弹窗标题 -->
+                    <Border Grid.Row="0" Background="#F8F9FA" Padding="20,15" 
+                    CornerRadius="8,8,0,0" BorderThickness="0,0,0,1" 
+                    BorderBrush="#E0E0E0">
+                        <TextBlock Text="新增用户" 
+                           Style="{StaticResource ModalTitleStyle}"/>
+                    </Border>
+
+                    <!-- 表单内容 -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="20">
+                        <StackPanel>
+                            <!-- 姓名 -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="姓名：" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBox x:Name="AddNameTextBox" Grid.Column="1" 
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                            </Grid>
+
+                            <!-- 性别 -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="性别：" Style="{StaticResource FormLabelStyle}"/>
+                                <ComboBox x:Name="AddGenderComboBox" Grid.Column="1" 
+                                  Style="{StaticResource FormComboBoxStyle}">
+                                    <ComboBoxItem Content="男" IsSelected="True"/>
+                                    <ComboBoxItem Content="女"/>
+                                </ComboBox>
+                            </Grid>
+
+                            <!-- 生日 -->
+                            <Grid Margin="0,0,0,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="生日：" Style="{StaticResource FormLabelStyle}"/>
+                                <DatePicker x:Name="AddBirthdayDatePicker" Grid.Column="1" 
+                                    FontSize="14" Padding="8"
+                                    BorderThickness="1" BorderBrush="#E0E0E0"
+                                    SelectedDate="{x:Static sys:DateTime.Now}"/>
+                            </Grid>
+
+                            <!-- 电话号码 -->
+                            <Grid Margin="0,0,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="电话号码：" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBox x:Name="AddPhoneTextBox" Grid.Column="1" 
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- 按钮区域 -->
+                    <Border Grid.Row="2" Background="#F8F9FA" Padding="15" 
+                    CornerRadius="0,0,8,8" BorderThickness="0,1,0,0" 
+                    BorderBrush="#E0E0E0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Button Content="保存" 
+                            Style="{StaticResource ModalButtonStyle}"
+                            Click="SaveAddButton_Click"/>
+
+                            <Button Content="关闭" 
+                            Background="#6C757D"
+                            Style="{StaticResource ModalButtonStyle}"
+                            Click="CloseAddModal_Click"/>
                         </StackPanel>
                     </Border>
                 </Grid>

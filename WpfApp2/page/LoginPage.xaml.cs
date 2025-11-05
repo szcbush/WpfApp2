@@ -46,8 +46,6 @@ namespace WpfApp2.page
 
             if (ValidateLogin(username, password))
             {
-                MessageBox.Show("登录成功！", "提示",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService?.Navigate(new MainMenu());
             }
             else
