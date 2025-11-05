@@ -55,24 +55,20 @@ namespace WpfApp2.page
                 {
                     conn.Open();
                     string query = "SELECT id,username,gender,birthday,phone_number from users";
-                    using (var cmd = new SqliteCommand(query, conn))
+                    using var cmd = new SqliteCommand(query, conn);
+                    using var reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        using (var reader = cmd.ExecuteReader())
+                        u1.Add(new UserInfo
                         {
-                            while (reader.Read())
-                            {
-                                u1.Add(new UserInfo
-                                {
-                                    UserId = reader["id"].ToString(),
-                                    Name = reader["username"].ToString(),
-                                    Gender = reader["gender"].ToString(),
-                                    Birthday = DateTime.Parse(reader["birthday"].ToString()),
-                                    PhoneNumber = reader["phone_number"].ToString()
-                                });
-                             }
-                            Users = u1;
+                            UserId = reader["id"].ToString(),
+                            Name = reader["username"].ToString(),
+                            Gender = reader["gender"].ToString(),
+                            Birthday = DateTime.Parse(reader["birthday"].ToString()),
+                            PhoneNumber = reader["phone_number"].ToString()
+                        });
                         }
-                    }
+                    Users = u1;
                 }
 
             }
